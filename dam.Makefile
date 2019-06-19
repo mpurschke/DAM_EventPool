@@ -15,13 +15,14 @@ HDRFILES = $(PACKAGE).h
 LINKFILE = $(PACKAGE)LinkDef.h
 
 
-ADDITIONAL_SOURCES = dam_data.cc
+ADDITIONAL_HEADERS = tpc_fee_manager.h dam_data.h
+ADDITIONAL_SOURCES = tpc_fee_manager.cc dam_data.cc
 ADDITIONAL_LIBS = 
 
 
 SO = lib$(PACKAGE).so
 
-$(SO) : $(PACKAGE).cc $(PACKAGE)_dict.C $(ADDITIONAL_SOURCES) $(LINKFILE)
+$(SO) : $(PACKAGE).cc $(PACKAGE)_dict.C $(ADDITIONAL_SOURCES) $(ADDITIONAL_HEADERS) $(LINKFILE)
 	$(CXX) $(CXXFLAGS) -o $@ -shared  $<  $(ADDITIONAL_SOURCES) $(PACKAGE)_dict.C $(LDFLAGS)  $(ADDITIONAL_LIBS)
 
 

@@ -1,3 +1,4 @@
+
 // dam_data.cc
 
 #include "dam_data.h"
@@ -23,14 +24,23 @@ dam_data::dam_data ( const unsigned int bx,
 }
 
 
-void dam_data::identify( std::ostream &os, const int flag)
+
+
+unsigned long long dam_data::get_key() const
 {
-  os << hex << "bx =  " << std::setw(6) << _bx << dec 
+  unsigned long long r = _bx;
+  r = r << 8 | _channel;
+  return r;
+}
+
+  void dam_data::identify( std::ostream &os, const int flag)
+{
+  os << hex << "bx =  " << std::setw(10) << _bx << dec 
      << " fee " << std::setw(4) << _fee
      << " channel " << std::setw(4) << _channel  << " nr_samples  " << get_nr_samples() << endl;
 }
 
-unsigned short dam_data::get_sample(const unsigned int s)
+unsigned short dam_data::get_sample(const unsigned int s) const
 {
   if ( s >= _samples.size() ) return 0;
   return _samples.at(s);

@@ -20,11 +20,11 @@ class dam_data {
 
   virtual void identify( std::ostream &os = std::cout, const int flag = 0);
 
-  virtual unsigned int get_key() const {return (_bx << 8) + _channel; };
+  virtual unsigned long long get_key() const;
   virtual unsigned int get_bx() const {return _bx; };
   virtual unsigned int get_channel() const {return _channel; };
   virtual int get_nr_samples() const {return _samples.size(); };
-  virtual unsigned short get_sample(const unsigned int s);
+  virtual unsigned short get_sample(const unsigned int s) const;
   
   
  protected:

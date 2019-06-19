@@ -7,6 +7,10 @@
 
 int process_event (Event *e); //++CINT 
 int traverse_set(const int fee);
-int test_insert();
+int analyze_events();
+
+
+// this is just a test routine
+int nextEvent(const int fee);
 
 #endif /* __DAM_H__ */
